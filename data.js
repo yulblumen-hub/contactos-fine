@@ -13,7 +13,7 @@ window.FINE = {
       "id": "lab",
       "nombre": "F!NE",
       "titulo": "Laboratorio y Producción",
-      "titular": "Marca propia, venta mayorista y más",
+      "titular": "Creá tu marca o vendé la nuestra",
       "intro": {
         "titulo": "Innovación para el bienestar",
         "texto": [
