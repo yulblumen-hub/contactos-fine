@@ -37,9 +37,9 @@ window.FINE = {
           "nombre": "Yul",
           "apellido": "",
           "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
+          "mail": "yulblumen@thefinecompany.com.ar",
+          "telefono": "+5491159628940",
+          "whatsapp": "5491159628940",
           "slug": "yul",
           "vcf": "vcf/yul.vcf"
         }
