@@ -6,7 +6,7 @@ window.FINE = {
     "bajada": "Elegí el área que necesitás y escribinos directo. Sin intermediarios.",
     "web": "https://thefinecompany.com.ar",
     "tienda": "https://listado.mercadolibre.com.ar/_CustId_TIENDA_FINE",
-    "instagram": "https://instagram.com/fine.arg",
+    "instagram": "https://instagram.com/keepmefine",
     "mailGeneral": "customer@thefinecompany.com.ar"
   },
   "atajos": [
