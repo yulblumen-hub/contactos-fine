@@ -36,7 +36,7 @@ window.FINE = {
         {
           "id": "comercial",
           "nombre": "Comercial y E-commerce",
-          "detalle": "Alianzas, venta mayorista y consultas de e-commerce.",
+          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
           "personas": [
             {
               "nombre": "Yul",
