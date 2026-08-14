@@ -97,12 +97,12 @@ window.FINE = {
         {
           "id": "comercial",
           "nombre": "Comercial y E-commerce",
-          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
+          "detalle": "Venta mayorista y asesoramiento en e-commerce.",
           "personas": [
             {
               "nombre": "Yul",
               "apellido": "Blumencwejg",
-              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
+              "cargo": "Asesoramiento en E-commerce y Venta Mayorista",
               "mail": "yulblumen@thefinecompany.com.ar",
               "telefono": "+5491159628940",
               "whatsapp": "5491159628940",
