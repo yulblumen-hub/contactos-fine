@@ -36,7 +36,7 @@ window.FINE = {
         {
           "nombre": "Yul",
           "apellido": "",
-          "cargo": "Comercial y Marketing",
+          "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
           "mail": "",
           "telefono": "",
           "whatsapp": "",
@@ -97,7 +97,7 @@ window.FINE = {
         {
           "nombre": "Francisco",
           "apellido": "",
-          "cargo": "CEO",
+          "cargo": "Director",
           "mail": "",
           "telefono": "",
           "whatsapp": "",
@@ -107,7 +107,7 @@ window.FINE = {
         {
           "nombre": "Javier",
           "apellido": "Del Valle",
-          "cargo": "Socio",
+          "cargo": "Director",
           "mail": "",
           "telefono": "",
           "whatsapp": "",
