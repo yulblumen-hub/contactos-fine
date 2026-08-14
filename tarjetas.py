@@ -58,6 +58,23 @@ def espaciado(c, x, y, texto, fuente, cuerpo, track, color, centrado=False):
     return ancho
 
 
+def ancho_espaciado(texto, fuente, cuerpo, track):
+    if not texto:
+        return 0
+    return sum(pdfmetrics.stringWidth(ch, fuente, cuerpo) + track for ch in texto) - track
+
+
+def espaciado_ajustado(c, x, y, texto, fuente, cuerpo, track, color, ancho_max):
+    """Achica cuerpo y tracking hasta que el texto entre en la columna.
+
+    Los cargos varian mucho de largo y no puede pisar el QR.
+    """
+    while ancho_espaciado(texto, fuente, cuerpo, track) > ancho_max and cuerpo > 3.6:
+        track = max(track - 0.05, 0.5)
+        cuerpo -= 0.1
+    espaciado(c, x, y, texto, fuente, cuerpo, track, color)
+
+
 def qr_imagen(url, escala=30):
     """QR con la mayor correccion de errores para aguantar el logo al centro."""
     q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -81,20 +98,18 @@ LOGO = svg2rlg(str(RAIZ / "assets/logo.svg"))
 
 
 def fondo(c):
-    """Fondo a sangre, con un halo suave arriba como en la web."""
-    c.setFillColor(TINTA)
-    c.rect(0, 0, HOJA[0], HOJA[1], stroke=0, fill=1)
-    pasos = 60
-    for i in range(pasos):
-        t = i / pasos
-        c.setFillColor(Color(
-            TINTA.red + (PETROLEO.red - TINTA.red) * (1 - t) * 0.55,
-            TINTA.green + (PETROLEO.green - TINTA.green) * (1 - t) * 0.55,
-            TINTA.blue + (PETROLEO.blue - TINTA.blue) * (1 - t) * 0.55,
-        ))
-        alto = HOJA[1] * 0.5
-        c.rect(0, HOJA[1] - alto * (i + 1) / pasos, HOJA[0], alto / pasos + 0.6,
-               stroke=0, fill=1)
+    """Fondo a sangre. Degradado real de PDF: no banda al imprimir."""
+    medio = Color(
+        (TINTA.red + PETROLEO.red) / 2,
+        (TINTA.green + PETROLEO.green) / 2,
+        (TINTA.blue + PETROLEO.blue) / 2,
+    )
+    c.saveState()
+    p = c.beginPath()
+    p.rect(0, 0, HOJA[0], HOJA[1])
+    c.clipPath(p, stroke=0, fill=0)
+    c.linearGradient(0, HOJA[1], 0, 0, [PETROLEO, medio, TINTA], [0, 0.45, 1])
+    c.restoreState()
 
 
 def marcas(c):
@@ -135,56 +150,67 @@ def telefono_legible(numero):
     return numero
 
 
-def frente(c, titular):
+def xy(x_mm, y_mm):
+    """Convierte coordenadas del area de corte a coordenadas de la hoja."""
+    return SANGRADO + x_mm * mm, SANGRADO + y_mm * mm
+
+
+def frente(c):
+    """Solo el logotipo. La cara limpia es la que se recuerda."""
     fondo(c)
-    cx = HOJA[0] / 2
-    cy = HOJA[1] / 2
-
-    # El bloque se centra a ojo: logo al medio, rotulo arriba y dominio abajo.
-    alto_logo = 42 * mm * (LOGO.height / LOGO.width)
-    base_logo = cy - alto_logo / 2 + 1 * mm
-
-    espaciado(c, cx, base_logo + alto_logo + 6 * mm,
-              titular.upper(), "Jost", 5.2, 2.1, LIMA, centrado=True)
-    logo_en(c, cx, base_logo, 42 * mm)
-    espaciado(c, cx, base_logo - 7 * mm,
-              "THEFINECOMPANY.COM.AR", "Jost", 5, 1.5, GRIS, centrado=True)
-
+    x, y = xy(45, 25)
+    alto = 40 * mm * (LOGO.height / LOGO.width)
+    logo_en(c, x, y - alto / 2, 40 * mm)
     marcas(c)
     c.showPage()
 
 
 def dorso(c, persona):
     fondo(c)
-    izq = SANGRADO + 7 * mm
-    lado = 25 * mm
-    qx = SANGRADO + ANCHO - 7 * mm - lado
-    qy = (HOJA[1] - lado) / 2
 
-    # Fondo blanco con aire: el QR necesita contraste y zona muda.
+    MARGEN = 7        # aire hasta el corte
+    LADO_QR = 22      # el QR y su recuadro blanco
+    AIRE_QR = 2
+
+    # --- QR, alineado a la derecha y centrado en vertical ---
+    qx, qy = xy(90 - MARGEN - LADO_QR, 25 - LADO_QR / 2 + 1.5)
     c.setFillColor(white)
-    c.roundRect(qx - 2 * mm, qy - 2 * mm, lado + 4 * mm, lado + 4 * mm,
-                2 * mm, stroke=0, fill=1)
-    c.drawImage(QR, qx, qy, lado, lado)
+    c.roundRect(qx - AIRE_QR * mm, qy - AIRE_QR * mm,
+                (LADO_QR + AIRE_QR * 2) * mm, (LADO_QR + AIRE_QR * 2) * mm,
+                1.6 * mm, stroke=0, fill=1)
+    c.drawImage(QR, qx, qy, LADO_QR * mm, LADO_QR * mm)
 
-    espaciado(c, izq, HOJA[1] - 15 * mm, "ESCANEÁ Y GUARDÁ", "Jost", 4.6, 1.4, LIMA)
+    cx_qr = qx + LADO_QR * mm / 2
+    espaciado(c, cx_qr, xy(0, 8.5)[1], "ESCANEÁ Y GUARDÁ",
+              "Jost", 4.3, 1.15, GRIS, centrado=True)
 
-    c.setFont("Inter", 10.5)
+    # --- Columna de datos ---
+    izq = xy(MARGEN, 0)[0]
+
+    c.setFont("Inter", 10)
     c.setFillColor(white)
-    c.drawString(izq, HOJA[1] - 22 * mm, persona["nombre_completo"])
+    c.drawString(izq, xy(0, 32.5)[1], persona["nombre_completo"])
 
-    c.setFont("Inter", 6.6)
-    c.setFillColor(GRIS)
-    y = HOJA[1] - 26.5 * mm
-    for linea in persona["lineas"]:
-        c.drawString(izq, y, linea)
-        y -= 3.4 * mm
+    # La columna termina donde arranca el recuadro blanco del QR.
+    ancho_col = (90 - MARGEN - LADO_QR - AIRE_QR - 3 - MARGEN) * mm
 
-    c.setStrokeColor(Color(1, 1, 1, alpha=0.16))
+    if persona["cargo"]:
+        espaciado_ajustado(c, izq, xy(0, 28.5)[1], persona["cargo"].upper(),
+                           "Jost", 4.8, 1.1, LIMA, ancho_col)
+
+    c.setStrokeColor(Color(1, 1, 1, alpha=0.18))
     c.setLineWidth(0.4)
-    c.line(izq, 13 * mm, izq + 30 * mm, 13 * mm)
+    c.line(izq, xy(0, 25)[1], izq + 14 * mm, xy(0, 25)[1])
 
-    espaciado(c, izq, 9 * mm, "TODOS LOS CONTACTOS DE F!NE", "Jost", 4.4, 1.2, GRIS)
+    c.setFont("Inter", 7)
+    c.setFillColor(Color(1, 1, 1, alpha=0.82))
+    y = 21
+    for linea in persona["contacto"]:
+        c.drawString(izq, xy(0, y)[1], linea)
+        y -= 3.6
+
+    espaciado(c, izq, xy(0, 8.5)[1], "THEFINECOMPANY.COM.AR",
+              "Jost", 4.3, 1.15, GRIS)
 
     marcas(c)
     c.showPage()
@@ -200,27 +226,26 @@ def main():
                 completo = f"{persona['nombre']} {persona.get('apellido', '')}".strip()
                 if completo in gente:
                     continue
-                lineas = [persona["cargo"]] if persona.get("cargo") else []
+                contacto = []
                 if persona.get("telefono"):
-                    lineas.append(telefono_legible(persona["telefono"]))
+                    contacto.append(telefono_legible(persona["telefono"]))
                 if persona.get("mail"):
-                    lineas.append(persona["mail"])
+                    contacto.append(persona["mail"])
                 gente[completo] = {
                     "nombre_completo": completo,
-                    "lineas": lineas,
+                    "cargo": persona.get("cargo", ""),
+                    "contacto": contacto,
                     "slug": slug(completo),
                 }
 
     salida = RAIZ / "tarjetas"
     salida.mkdir(exist_ok=True)
 
-    titular = "LABORATORIO · PRODUCCIÓN · CORE"
-
     # Un PDF con todas, para mandar de una a la imprenta.
     c = canvas.Canvas(str(salida / "tarjetas-fine.pdf"), pagesize=HOJA)
     c.setTitle("Tarjetas F!NE")
     for persona in gente.values():
-        frente(c, titular)
+        frente(c)
         dorso(c, persona)
     c.save()
 
@@ -228,7 +253,7 @@ def main():
     for persona in gente.values():
         uno = canvas.Canvas(str(salida / f"tarjeta-{persona['slug']}.pdf"), pagesize=HOJA)
         uno.setTitle(f"Tarjeta {persona['nombre_completo']}")
-        frente(uno, titular)
+        frente(uno)
         dorso(uno, persona)
         uno.save()
 
