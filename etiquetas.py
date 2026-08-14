@@ -57,6 +57,11 @@ def medidas(diametro):
     return HOJA
 
 
+def lado_qr(diametro):
+    """El QR mas grande que entra dejando lugar a los dos textos en arco."""
+    return diametro - 30 * mm
+
+
 def texto_en_arco(c, texto, radio, fuente, cuerpo, track, color, arriba=True):
     """Escribe letra por letra siguiendo una circunferencia.
 
@@ -82,7 +87,9 @@ def texto_en_arco(c, texto, radio, fuente, cuerpo, track, color, arriba=True):
         angulo += -paso if arriba else paso
 
 
-def sticker(c, con_qr):
+def sticker(c, con_qr, diametro):
+    medidas(diametro)
+
     # Fondo circular a sangre.
     c.setFillColor(T.TINTA)
     c.rect(0, 0, HOJA[0], HOJA[1], stroke=0, fill=1)
@@ -106,7 +113,7 @@ def sticker(c, con_qr):
 
     if con_qr:
         # Sin leon: el QR necesita todo el espacio disponible para leerse bien.
-        lado = 15 * mm
+        lado = lado_qr(diametro)
         base = CENTRO[1] - lado / 2
         c.setFillColor(white)
         c.roundRect(CENTRO[0] - lado / 2 - 1.6 * mm, base - 1.6 * mm,
@@ -130,18 +137,25 @@ def main():
     salida = RAIZ / "etiquetas"
     salida.mkdir(exist_ok=True)
 
-    for nombre, con_qr in [("sticker-nfc-38mm", True), ("sticker-nfc-38mm-limpio", False)]:
-        c = canvas.Canvas(str(salida / f"{nombre}.pdf"), pagesize=HOJA)
+    variantes = [
+        ("sticker-nfc-con-qr", True, CON_QR),
+        ("sticker-nfc", False, SOLO_NFC),
+    ]
+    for nombre, con_qr, diametro in variantes:
+        hoja = medidas(diametro)
+        c = canvas.Canvas(str(salida / f"{nombre}.pdf"), pagesize=hoja)
         c.setTitle(f"Sticker NFC F!NE — {nombre}")
-        sticker(c, con_qr)
+        sticker(c, con_qr, diametro)
         c.save()
+        print(f"  {nombre}.pdf — {diametro/mm:.0f} mm")
 
     url = json.loads((RAIZ / "contactos.json").read_text(encoding="utf-8"))["empresa"]["url"]
-    modulo_mm = 15 / MODULOS
-    print(f"OK — stickers de {DIAMETRO/mm:.0f} mm en {salida}/")
+    modulo_mm = (lado_qr(CON_QR) / mm) / MODULOS
+    print(f"OK — stickers en {salida}/")
     print(f"   El QR apunta a {url}")
-    print(f"   QR de 15 mm, {MODULOS}x{MODULOS} modulos = {modulo_mm:.2f} mm cada uno"
-          f" ({'ok' if modulo_mm >= 0.45 else 'CHICO: agrandar el sticker'})")
+    print(f"   QR de {lado_qr(CON_QR)/mm:.0f} mm, {MODULOS}x{MODULOS} modulos = "
+          f"{modulo_mm:.2f} mm cada uno "
+          f"({'ok' if modulo_mm >= 0.45 else 'CHICO: agrandar el sticker'})")
 
 
 if __name__ == "__main__":

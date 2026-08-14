@@ -79,10 +79,21 @@ def main():
         print(f"FALLO el push:\n{push.stderr}")
         sys.exit(4)
 
-    correr(["gh", "api", "-X", "PUT", f"repos/{REPO}/pages",
-            "-f", f"cname={dominio}", "-F", "https_enforced=true"])
+    # El dominio primero y solo. Pedir https_enforced en la misma llamada falla
+    # en silencio, porque el certificado todavia no existe.
+    r = correr(["gh", "api", "-X", "PUT", f"repos/{REPO}/pages", "-f", f"cname={dominio}"])
+    if r.returncode:
+        print(f"FALLO al configurar Pages:\n{r.stderr}")
+        sys.exit(5)
+
+    estado = correr(["gh", "api", f"repos/{REPO}/pages", "--jq", ".cname"]).stdout.strip()
+    if estado != dominio:
+        print(f"FALLO: Pages quedo en '{estado}' y no en '{dominio}'.")
+        sys.exit(6)
+
     print(f"5/5  Listo — https://{dominio}/")
-    print("     El certificado HTTPS puede tardar unos minutos en emitirse.")
+    print("     Cuando GitHub emita el certificado (unos minutos), forzar HTTPS con:")
+    print(f"     gh api -X PUT repos/{REPO}/pages -F https_enforced=true")
 
 
 if __name__ == "__main__":
