@@ -128,7 +128,11 @@
       "titular": "Manejá toda tu empresa y entendela desde adentro",
       "intro": {
         "titulo": "Toda la empresa en un solo lugar",
-        "texto": "CORE es el sistema con el que operamos F!NE todos los días. Une las ventas de Mercado Libre y Tienda Nube, el WhatsApp con bot, el CRM, el stock de todos los depósitos, las compras, la tesorería y el análisis de pauta. No es un software teórico: es la operación de una empresa real, puesta a disposición de la tuya."
+        "texto": [
+          "La mayoría de las empresas no tiene un problema de datos: los tiene repartidos en diez lugares que no se hablan. Mercado Libre por un lado, el banco por otro, el stock en una planilla y el resto en la cabeza de alguien.",
+          "CORE los junta. Ventas, stock, compras, cobros, pauta y cashflow en un mismo tablero, actualizado solo. Dejás de reconstruir el mes para recién ahí enterarte de cómo te fue.",
+          "Y no es un software teórico: es el sistema con el que operamos F!NE todos los días. Lo construimos para nosotros y aguanta la exigencia de una empresa real."
+        ]
       },
       "links": [],
       "modulos": [
