@@ -30,7 +30,9 @@ from svglib.svglib import svg2rlg
 
 RAIZ = pathlib.Path(__file__).parent
 DESCARGAS = RAIZ.parent
-URL = "https://yulblumen-hub.github.io/contactos-fine/"
+
+DATOS = json.loads((RAIZ / "contactos.json").read_text(encoding="utf-8"))
+URL = DATOS["empresa"]["url"]
 DOMINIO = "THEFINECOMPANY.COM.AR"
 
 # Medida estandar en Argentina, con 3 mm de sangrado por lado.
@@ -316,10 +318,8 @@ def dorso(c, persona):
 # -------------------------------------------------------------------- main
 
 def main():
-    datos = json.loads((RAIZ / "contactos.json").read_text(encoding="utf-8"))
-
     gente = {}
-    for unidad in datos["unidades"]:
+    for unidad in DATOS["unidades"]:
         for area in unidad["areas"]:
             for persona in area["personas"]:
                 completo = f"{persona['nombre']} {persona.get('apellido', '')}".strip()

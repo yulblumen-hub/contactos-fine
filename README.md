@@ -49,6 +49,32 @@ Si dejás un campo vacío, el botón correspondiente no aparece — no se rompe 
 
 Ninguno de esos dos se edita a mano.
 
+## Pasar a un dominio propio
+
+1. Cargar en el DNS del dominio (está en **AWS Route 53**):
+
+   ```
+   Tipo: CNAME   Nombre: contactos   Valor: yulblumen-hub.github.io   TTL: 300
+   ```
+
+2. Cuando resuelva, correr:
+
+   ```bash
+   python3 dominio.py contactos.thefinecompany.com.ar
+   ```
+
+Eso escribe el `CNAME`, actualiza la URL, **regenera los QR y las tarjetas**,
+publica y activa HTTPS. Si el DNS todavía no está, el script frena y no toca
+nada: es importante, porque configurar el dominio antes de tiempo deja el
+sitio caído.
+
+## Otros generadores
+
+- `python3 qr.py` — regenera los QR sueltos (`qr/`).
+- `python3 tarjetas.py` — regenera las tarjetas de presentación (`tarjetas/`).
+
+Los dos leen la URL de `contactos.json`, así que nunca quedan desfasados.
+
 ## Ver la web en local
 
 ```bash
