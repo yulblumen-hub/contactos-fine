@@ -54,9 +54,9 @@ window.FINE = {
           "nombre": "Santiago",
           "apellido": "Beier",
           "cargo": "Producción",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
+          "mail": "santiagobeier@thefinecompany.com.ar",
+          "telefono": "+5491155766264",
+          "whatsapp": "5491155766264",
           "slug": "santiago-beier",
           "vcf": "vcf/santiago-beier.vcf"
         }
