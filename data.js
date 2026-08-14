@@ -5,7 +5,7 @@ window.FINE = {
     "nombre": "The F!NE Company",
     "bajada": "Elegí el área que necesitás y escribinos directo. Sin intermediarios.",
     "web": "https://thefinecompany.com.ar",
-    "tienda": "https://listado.mercadolibre.com.ar/_CustId_TIENDA_FINE",
+    "tienda": "https://www.mercadolibre.com.ar/tienda/fine",
     "instagram": "https://instagram.com/keepmefine",
     "mailGeneral": "customer@thefinecompany.com.ar"
   },
