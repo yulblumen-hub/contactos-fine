@@ -421,32 +421,54 @@ main {
 /* ---------------- Tarjeta de persona ---------------- */
 
 .tarjeta {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.022) 100%);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.058) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid var(--linea);
   border-radius: var(--radio);
-  padding: 18px;
+  padding: 17px 17px 16px;
   margin-bottom: 10px;
   box-shadow: var(--sombra);
   transition: border-color 0.2s, transform 0.2s;
 }
 
-.tarjeta:hover { border-color: rgba(255, 255, 255, 0.16); }
+/* Filo lima arriba: marca la tarjeta sin sumar otro borde. */
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 17px;
+  right: 17px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 201, 73, 0.5), transparent);
+}
 
-.tarjeta__fila { display: flex; align-items: center; gap: 13px; }
+.tarjeta:hover { border-color: rgba(255, 255, 255, 0.17); }
+
+.tarjeta__fila {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--linea);
+}
 
 .avatar {
   flex: none;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: grid;
   place-items: center;
+  font-family: var(--display);
   font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-indent: 0.06em;
   color: var(--lima);
-  background: radial-gradient(circle at 30% 25%, rgba(201, 201, 73, 0.28), rgba(201, 201, 73, 0.07));
+  background: radial-gradient(circle at 32% 26%, rgba(201, 201, 73, 0.3), rgba(201, 201, 73, 0.05));
   border: 1px solid var(--linea-viva);
+  box-shadow: 0 0 0 4px rgba(201, 201, 73, 0.05);
 }
 
 .tarjeta__nombre {
@@ -458,15 +480,21 @@ main {
 
 .tarjeta__cargo {
   color: var(--texto-2);
-  font-size: 13.5px;
-  margin: 1px 0 0;
+  font-size: 13px;
+  margin: 2px 0 0;
 }
 
 .tarjeta__acciones {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.tarjeta__secundarias {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
 }
 
 .pendiente {
@@ -499,6 +527,11 @@ main {
 }
 
 .btn:hover { background: rgba(255, 255, 255, 0.09); }
+
+/* Dentro de las tarjetas los botones se centran y ocupan su columna. */
+.tarjeta__acciones .btn { justify-content: center; }
+
+.btn--ancho { width: 100%; }
 
 .btn:active { transform: scale(0.975); }
 

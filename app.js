@@ -88,23 +88,28 @@
     var acciones = crear("div", "tarjeta__acciones");
     var wa = soloDigitos(persona.whatsapp || persona.telefono);
 
-    // WhatsApp primero: es la via que mas se usa y la que el visitante busca.
+    // WhatsApp manda: ocupa todo el ancho y es la unica accion en lima.
     if (wa) {
       acciones.appendChild(
-        boton("btn--lima", ICONOS.whatsapp, "WhatsApp", "https://wa.me/" + wa, true)
+        boton("btn--lima btn--ancho", ICONOS.whatsapp, "WhatsApp", "https://wa.me/" + wa, true)
       );
     }
 
+    // Las secundarias van en dos columnas parejas, sin cortes irregulares.
+    var secundarias = crear("div", "tarjeta__secundarias");
+
     if (persona.mail) {
-      acciones.appendChild(boton("", ICONOS.mail, "Mail", "mailto:" + persona.mail, false));
+      secundarias.appendChild(boton("", ICONOS.mail, "Mail", "mailto:" + persona.mail, false));
     }
 
     if (persona.mail || persona.telefono) {
-      var guardar = boton("", ICONOS.contacto, "Guardar contacto", persona.vcf, false);
+      var guardar = boton("", ICONOS.contacto, "Guardar", persona.vcf, false);
       // El nombre del archivo es lo que ve el usuario al descargarlo.
       guardar.setAttribute("download", completo + ".vcf");
-      acciones.appendChild(guardar);
+      secundarias.appendChild(guardar);
     }
+
+    if (secundarias.childNodes.length) acciones.appendChild(secundarias);
 
     if (acciones.childNodes.length) {
       caja.appendChild(acciones);
