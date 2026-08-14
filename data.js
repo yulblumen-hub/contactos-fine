@@ -71,9 +71,9 @@ window.FINE = {
           "nombre": "Facundo",
           "apellido": "Lobo",
           "cargo": "Administración",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
+          "mail": "administracion@thefinecompany.com.ar",
+          "telefono": "+5491128186862",
+          "whatsapp": "5491128186862",
           "slug": "facundo-lobo",
           "vcf": "vcf/facundo-lobo.vcf"
         }
