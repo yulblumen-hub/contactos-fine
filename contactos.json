@@ -17,56 +17,20 @@
         "texto": "En F!NE desarrollamos y fabricamos nuestras propias formulaciones, con respaldo técnico, control de calidad y mejora continua. Del cuidado de la piel al alto rendimiento: laboratorio, planta y marca en una misma casa, combinando desarrollo propio con alianzas y tecnologías internacionales."
       },
       "links": [
-        { "texto": "Web", "url": "https://thefinecompany.com.ar" },
-        { "texto": "Mercado Libre", "url": "https://www.mercadolibre.com.ar/tienda/fine" },
-        { "texto": "Instagram", "url": "https://instagram.com/keepmefine" }
+        {
+          "texto": "Web",
+          "url": "https://thefinecompany.com.ar"
+        },
+        {
+          "texto": "Mercado Libre",
+          "url": "https://www.mercadolibre.com.ar/tienda/fine"
+        },
+        {
+          "texto": "Instagram",
+          "url": "https://instagram.com/keepmefine"
+        }
       ],
       "areas": [
-        {
-          "id": "comercial",
-          "nombre": "Comercial y E-commerce",
-          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
-          "personas": [
-            {
-              "nombre": "Yul",
-              "apellido": "Blumencwejg",
-              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
-              "mail": "yulblumen@thefinecompany.com.ar",
-              "telefono": "+5491159628940",
-              "whatsapp": "5491159628940"
-            }
-          ]
-        },
-        {
-          "id": "produccion",
-          "nombre": "Producción y Fasón",
-          "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
-          "personas": [
-            {
-              "nombre": "Santiago",
-              "apellido": "Beier",
-              "cargo": "Producción",
-              "mail": "santiagobeier@thefinecompany.com.ar",
-              "telefono": "+5491155766264",
-              "whatsapp": "5491155766264"
-            }
-          ]
-        },
-        {
-          "id": "administracion",
-          "nombre": "Administración",
-          "detalle": "Pagos, facturación y proveedores.",
-          "personas": [
-            {
-              "nombre": "Facundo",
-              "apellido": "Lobo",
-              "cargo": "Administración",
-              "mail": "administracion@thefinecompany.com.ar",
-              "telefono": "+5491128186862",
-              "whatsapp": "5491128186862"
-            }
-          ]
-        },
         {
           "id": "direccion",
           "nombre": "Dirección",
@@ -87,6 +51,51 @@
               "mail": "javierdelvalle@thefinecompany.com.ar",
               "telefono": "+5491140973631",
               "whatsapp": "5491140973631"
+            }
+          ]
+        },
+        {
+          "id": "produccion",
+          "nombre": "Producción y Fasón",
+          "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
+          "personas": [
+            {
+              "nombre": "Santiago",
+              "apellido": "Beier",
+              "cargo": "Producción",
+              "mail": "santiagobeier@thefinecompany.com.ar",
+              "telefono": "+5491155766264",
+              "whatsapp": "5491155766264"
+            }
+          ]
+        },
+        {
+          "id": "comercial",
+          "nombre": "Comercial y E-commerce",
+          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
+          "personas": [
+            {
+              "nombre": "Yul",
+              "apellido": "Blumencwejg",
+              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
+              "mail": "yulblumen@thefinecompany.com.ar",
+              "telefono": "+5491159628940",
+              "whatsapp": "5491159628940"
+            }
+          ]
+        },
+        {
+          "id": "administracion",
+          "nombre": "Administración",
+          "detalle": "Pagos, facturación y proveedores.",
+          "personas": [
+            {
+              "nombre": "Facundo",
+              "apellido": "Lobo",
+              "cargo": "Administración",
+              "mail": "administracion@thefinecompany.com.ar",
+              "telefono": "+5491128186862",
+              "whatsapp": "5491128186862"
             }
           ]
         }
@@ -144,27 +153,20 @@
           "detalle": "Te mostramos el sistema funcionando y vemos cómo se adapta a tu empresa.",
           "personas": [
             {
-              "nombre": "Yul",
-              "apellido": "Blumencwejg",
-              "cargo": "Comercial F!NE CORE",
-              "mail": "yulblumen@thefinecompany.com.ar",
-              "telefono": "+5491159628940",
-              "whatsapp": "5491159628940"
-            }
-          ]
-        },
-        {
-          "id": "core-direccion",
-          "nombre": "Dirección",
-          "detalle": "Implementaciones grandes, alianzas y acuerdos comerciales.",
-          "personas": [
-            {
               "nombre": "Francisco",
               "apellido": "Casas",
               "cargo": "Director",
               "mail": "franciscocasas@thefinecompany.com.ar",
               "telefono": "+5491167380935",
               "whatsapp": "5491167380935"
+            },
+            {
+              "nombre": "Javier",
+              "apellido": "Del Valle",
+              "cargo": "Director",
+              "mail": "javierdelvalle@thefinecompany.com.ar",
+              "telefono": "+5491140973631",
+              "whatsapp": "5491140973631"
             }
           ]
         }

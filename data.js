@@ -34,57 +34,6 @@ window.FINE = {
       ],
       "areas": [
         {
-          "id": "comercial",
-          "nombre": "Comercial y E-commerce",
-          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
-          "personas": [
-            {
-              "nombre": "Yul",
-              "apellido": "Blumencwejg",
-              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
-              "mail": "yulblumen@thefinecompany.com.ar",
-              "telefono": "+5491159628940",
-              "whatsapp": "5491159628940",
-              "slug": "yul-blumencwejg",
-              "vcf": "vcf/yul-blumencwejg.vcf"
-            }
-          ]
-        },
-        {
-          "id": "produccion",
-          "nombre": "Producción y Fasón",
-          "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
-          "personas": [
-            {
-              "nombre": "Santiago",
-              "apellido": "Beier",
-              "cargo": "Producción",
-              "mail": "santiagobeier@thefinecompany.com.ar",
-              "telefono": "+5491155766264",
-              "whatsapp": "5491155766264",
-              "slug": "santiago-beier",
-              "vcf": "vcf/santiago-beier.vcf"
-            }
-          ]
-        },
-        {
-          "id": "administracion",
-          "nombre": "Administración",
-          "detalle": "Pagos, facturación y proveedores.",
-          "personas": [
-            {
-              "nombre": "Facundo",
-              "apellido": "Lobo",
-              "cargo": "Administración",
-              "mail": "administracion@thefinecompany.com.ar",
-              "telefono": "+5491128186862",
-              "whatsapp": "5491128186862",
-              "slug": "facundo-lobo",
-              "vcf": "vcf/facundo-lobo.vcf"
-            }
-          ]
-        },
-        {
           "id": "direccion",
           "nombre": "Dirección",
           "detalle": "Temas directivos, alianzas estratégicas y prensa.",
@@ -108,6 +57,57 @@ window.FINE = {
               "whatsapp": "5491140973631",
               "slug": "javier-del-valle",
               "vcf": "vcf/javier-del-valle.vcf"
+            }
+          ]
+        },
+        {
+          "id": "produccion",
+          "nombre": "Producción y Fasón",
+          "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
+          "personas": [
+            {
+              "nombre": "Santiago",
+              "apellido": "Beier",
+              "cargo": "Producción",
+              "mail": "santiagobeier@thefinecompany.com.ar",
+              "telefono": "+5491155766264",
+              "whatsapp": "5491155766264",
+              "slug": "santiago-beier",
+              "vcf": "vcf/santiago-beier.vcf"
+            }
+          ]
+        },
+        {
+          "id": "comercial",
+          "nombre": "Comercial y E-commerce",
+          "detalle": "Alianzas, venta mayorista y asesoramiento en e-commerce.",
+          "personas": [
+            {
+              "nombre": "Yul",
+              "apellido": "Blumencwejg",
+              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
+              "mail": "yulblumen@thefinecompany.com.ar",
+              "telefono": "+5491159628940",
+              "whatsapp": "5491159628940",
+              "slug": "yul-blumencwejg",
+              "vcf": "vcf/yul-blumencwejg.vcf"
+            }
+          ]
+        },
+        {
+          "id": "administracion",
+          "nombre": "Administración",
+          "detalle": "Pagos, facturación y proveedores.",
+          "personas": [
+            {
+              "nombre": "Facundo",
+              "apellido": "Lobo",
+              "cargo": "Administración",
+              "mail": "administracion@thefinecompany.com.ar",
+              "telefono": "+5491128186862",
+              "whatsapp": "5491128186862",
+              "slug": "facundo-lobo",
+              "vcf": "vcf/facundo-lobo.vcf"
             }
           ]
         }
@@ -165,23 +165,6 @@ window.FINE = {
           "detalle": "Te mostramos el sistema funcionando y vemos cómo se adapta a tu empresa.",
           "personas": [
             {
-              "nombre": "Yul",
-              "apellido": "Blumencwejg",
-              "cargo": "Comercial F!NE CORE",
-              "mail": "yulblumen@thefinecompany.com.ar",
-              "telefono": "+5491159628940",
-              "whatsapp": "5491159628940",
-              "slug": "yul-blumencwejg",
-              "vcf": "vcf/yul-blumencwejg.vcf"
-            }
-          ]
-        },
-        {
-          "id": "core-direccion",
-          "nombre": "Dirección",
-          "detalle": "Implementaciones grandes, alianzas y acuerdos comerciales.",
-          "personas": [
-            {
               "nombre": "Francisco",
               "apellido": "Casas",
               "cargo": "Director",
@@ -190,6 +173,16 @@ window.FINE = {
               "whatsapp": "5491167380935",
               "slug": "francisco-casas",
               "vcf": "vcf/francisco-casas.vcf"
+            },
+            {
+              "nombre": "Javier",
+              "apellido": "Del Valle",
+              "cargo": "Director",
+              "mail": "javierdelvalle@thefinecompany.com.ar",
+              "telefono": "+5491140973631",
+              "whatsapp": "5491140973631",
+              "slug": "javier-del-valle",
+              "vcf": "vcf/javier-del-valle.vcf"
             }
           ]
         }
