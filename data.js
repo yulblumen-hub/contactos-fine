@@ -41,7 +41,7 @@ window.FINE = {
             {
               "nombre": "Francisco",
               "apellido": "Casas",
-              "cargo": "Director",
+              "cargo": "Director Comercial",
               "mail": "franciscocasas@thefinecompany.com.ar",
               "telefono": "+5491167380935",
               "whatsapp": "5491167380935",
@@ -51,7 +51,7 @@ window.FINE = {
             {
               "nombre": "Javier",
               "apellido": "Del Valle",
-              "cargo": "Director",
+              "cargo": "Director Financiero",
               "mail": "javierdelvalle@thefinecompany.com.ar",
               "telefono": "+5491140973631",
               "whatsapp": "5491140973631",
@@ -167,7 +167,7 @@ window.FINE = {
             {
               "nombre": "Francisco",
               "apellido": "Casas",
-              "cargo": "Director",
+              "cargo": "Director Comercial",
               "mail": "franciscocasas@thefinecompany.com.ar",
               "telefono": "+5491167380935",
               "whatsapp": "5491167380935",
@@ -177,7 +177,7 @@ window.FINE = {
             {
               "nombre": "Javier",
               "apellido": "Del Valle",
-              "cargo": "Director",
+              "cargo": "Director Financiero",
               "mail": "javierdelvalle@thefinecompany.com.ar",
               "telefono": "+5491140973631",
               "whatsapp": "5491140973631",
