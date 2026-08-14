@@ -53,7 +53,7 @@
     sufijo.textContent = unidad.marca || "";
     sufijo.hidden = !unidad.marca;
 
-    $("bajada").textContent = unidad.bajada || "";
+    $("titular").textContent = unidad.titular || "";
 
     var links = $("links");
     links.innerHTML = "";
@@ -78,7 +78,10 @@
 
     var datos = crear("div");
     datos.appendChild(crear("h3", "tarjeta__nombre", completo));
-    if (persona.cargo) datos.appendChild(crear("p", "tarjeta__cargo", persona.cargo));
+    // El cargo sigue viajando en la vCard aunque no se muestre en pantalla.
+    if (persona.cargo && !persona.ocultarCargo) {
+      datos.appendChild(crear("p", "tarjeta__cargo", persona.cargo));
+    }
     fila.appendChild(datos);
     caja.appendChild(fila);
 
@@ -188,7 +191,11 @@
     if (unidad.intro) {
       var intro = crear("section", "intro");
       intro.appendChild(crear("h2", "intro__titulo", unidad.intro.titulo));
-      intro.appendChild(crear("p", "intro__texto", unidad.intro.texto));
+      // El texto admite un parrafo suelto o varios.
+      var parrafos = [].concat(unidad.intro.texto || []);
+      parrafos.forEach(function (parrafo) {
+        intro.appendChild(crear("p", "intro__texto", parrafo));
+      });
       panel.appendChild(intro);
     }
 

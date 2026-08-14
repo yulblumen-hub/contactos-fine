@@ -110,20 +110,13 @@ main {
 
 .hero__titulo {
   font-family: var(--display);
-  font-size: clamp(29px, 7.4vw, 42px);
-  line-height: 1.14;
-  letter-spacing: 0.005em;
-  font-weight: 200;
+  font-size: clamp(21px, 5.2vw, 27px);
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+  font-weight: 300;
   color: var(--texto);
-  margin: 11px 0 0;
-}
-
-.hero__bajada {
-  max-width: 36ch;
-  margin: 15px auto 0;
-  color: var(--texto-2);
-  font-size: 14.5px;
-  line-height: 1.6;
+  max-width: 22ch;
+  margin: 10px auto 0;
 }
 
 /* Links de marca: tipografia editorial, sin cajas.
@@ -288,6 +281,9 @@ main {
   font-size: 14.5px;
   line-height: 1.72;
 }
+
+/* El ultimo parrafo es el ofrecimiento: va un tono mas claro. */
+.intro__texto:last-child { color: var(--texto); }
 
 /* ---------------- Módulos ---------------- */
 
