@@ -86,13 +86,13 @@ window.FINE = {
       "personas": [
         {
           "nombre": "Francisco",
-          "apellido": "",
+          "apellido": "Casas",
           "cargo": "Director",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
-          "slug": "francisco",
-          "vcf": "vcf/francisco.vcf"
+          "mail": "franciscocasas@thefinecompany.com.ar",
+          "telefono": "+5491167380935",
+          "whatsapp": "5491167380935",
+          "slug": "francisco-casas",
+          "vcf": "vcf/francisco-casas.vcf"
         },
         {
           "nombre": "Javier",

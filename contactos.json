@@ -66,11 +66,11 @@
       "personas": [
         {
           "nombre": "Francisco",
-          "apellido": "",
+          "apellido": "Casas",
           "cargo": "Director",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": ""
+          "mail": "franciscocasas@thefinecompany.com.ar",
+          "telefono": "+5491167380935",
+          "whatsapp": "5491167380935"
         },
         {
           "nombre": "Javier",
