@@ -199,6 +199,17 @@
       panel.appendChild(intro);
     }
 
+    if (unidad.caminos && unidad.caminos.length) {
+      var caminos = crear("div", "caminos");
+      unidad.caminos.forEach(function (camino) {
+        var item = crear("div", "camino");
+        item.appendChild(crear("h3", "camino__titulo", camino.titulo));
+        item.appendChild(crear("p", "camino__detalle", camino.detalle));
+        caminos.appendChild(item);
+      });
+      panel.appendChild(caminos);
+    }
+
     if (unidad.modulos && unidad.modulos.length) {
       panel.appendChild(crear("h2", "rotulo", "Qué incluye"));
       panel.appendChild(grillaModulos(unidad.modulos));

@@ -17,10 +17,23 @@ window.FINE = {
       "intro": {
         "titulo": "Innovación para el bienestar",
         "texto": [
-          "Somos F!NE: laboratorio, planta y marca en una misma casa. Desarrollamos y fabricamos nuestras propias formulaciones, con respaldo técnico, control de calidad y mejora continua, del cuidado de la piel al alto rendimiento.",
-          "Y lo hacemos también para vos. Podés lanzar tu propia marca —la desarrollamos y la producimos en nuestras plantas— o sumar los productos F!NE a tu negocio: una línea instalada, con demanda comprobada y rotación propia."
+          "Somos F!NE: laboratorio, planta y marca en una misma casa. Desarrollamos y fabricamos nuestras propias formulaciones, con respaldo técnico, control de calidad y mejora continua, del cuidado de la piel al alto rendimiento."
         ]
       },
+      "caminos": [
+        {
+          "titulo": "Querés vender F!NE",
+          "detalle": "Condiciones mayoristas sobre una línea instalada, con demanda comprobada y rotación propia."
+        },
+        {
+          "titulo": "Querés crear tu marca",
+          "detalle": "Te asesoramos de punta a punta: concepto, formulación, registros y producción."
+        },
+        {
+          "titulo": "Querés desarrollar tus productos",
+          "detalle": "Los formulamos y los fabricamos en nuestras plantas y laboratorios."
+        }
+      ],
       "links": [
         {
           "texto": "Web",
@@ -124,7 +137,7 @@ window.FINE = {
       "nombre": "F!NE CORE",
       "marca": "CORE",
       "titulo": "Sistema de gestión integral",
-      "titular": "Implementá el sistema en tu empresa",
+      "titular": "Manejá toda tu empresa y entendela desde adentro",
       "intro": {
         "titulo": "Toda la empresa en un solo lugar",
         "texto": "CORE es el sistema con el que operamos F!NE todos los días. Une las ventas de Mercado Libre y Tienda Nube, el WhatsApp con bot, el CRM, el stock de todos los depósitos, las compras, la tesorería y el análisis de pauta. No es un software teórico: es la operación de una empresa real, puesta a disposición de la tuya."

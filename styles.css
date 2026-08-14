@@ -285,6 +285,39 @@ main {
 /* El ultimo parrafo es el ofrecimiento: va un tono mas claro. */
 .intro__texto:last-child { color: var(--texto); }
 
+/* ---------------- Caminos de entrada ---------------- */
+
+.caminos {
+  display: grid;
+  gap: 1px;
+  margin-top: 30px;
+  background: var(--linea);
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+}
+
+.camino {
+  background: var(--tinta);
+  padding: 17px 2px;
+}
+
+.camino__titulo {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--lima);
+  margin: 0;
+}
+
+.camino__detalle {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: var(--texto-2);
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
 /* ---------------- Módulos ---------------- */
 
 .modulos {
