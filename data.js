@@ -98,9 +98,9 @@ window.FINE = {
           "nombre": "Javier",
           "apellido": "Del Valle",
           "cargo": "Director",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
+          "mail": "javierdelvalle@thefinecompany.com.ar",
+          "telefono": "+5491140973631",
+          "whatsapp": "5491140973631",
           "slug": "javier-del-valle",
           "vcf": "vcf/javier-del-valle.vcf"
         }
