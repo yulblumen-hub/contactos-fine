@@ -48,22 +48,32 @@ def vcard(persona, empresa):
     return "\r\n".join(lineas) + "\r\n"
 
 
+def personas():
+    """Recorre todas las personas de todas las unidades y areas."""
+    for unidad in DATOS["unidades"]:
+        for area in unidad["areas"]:
+            for persona in area["personas"]:
+                yield persona
+
+
 def main():
-    carpeta_vcf = RAIZ / "vcf"
-    carpeta_vcf.mkdir(exist_ok=True)
-    for viejo in carpeta_vcf.glob("*.vcf"):
+    carpeta = RAIZ / "vcf"
+    carpeta.mkdir(exist_ok=True)
+    for viejo in carpeta.glob("*.vcf"):
         viejo.unlink()
 
-    generados = 0
-    for area in DATOS["areas"]:
-        for persona in area["personas"]:
-            completo = f"{persona['nombre']} {persona.get('apellido', '')}".strip()
-            persona["slug"] = slug(completo)
-            persona["vcf"] = f"vcf/{persona['slug']}.vcf"
-            (carpeta_vcf / f"{persona['slug']}.vcf").write_text(
+    escritos = set()
+    for persona in personas():
+        completo = f"{persona['nombre']} {persona.get('apellido', '')}".strip()
+        nombre_archivo = slug(completo)
+        persona["slug"] = nombre_archivo
+        persona["vcf"] = f"vcf/{nombre_archivo}.vcf"
+        # Una persona puede aparecer en varias unidades: un solo .vcf alcanza.
+        if nombre_archivo not in escritos:
+            (carpeta / f"{nombre_archivo}.vcf").write_text(
                 vcard(persona, DATOS["empresa"]), encoding="utf-8"
             )
-            generados += 1
+            escritos.add(nombre_archivo)
 
     js = (
         "// GENERADO POR build.py — no editar a mano.\n"
@@ -73,7 +83,7 @@ def main():
         + ";\n"
     )
     (RAIZ / "data.js").write_text(js, encoding="utf-8")
-    print(f"OK — {generados} vCards y data.js generados.")
+    print(f"OK — {len(escritos)} vCards y data.js generados.")
 
 
 if __name__ == "__main__":

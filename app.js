@@ -1,4 +1,5 @@
-/* Contactos F!NE — arma la página a partir de window.FINE (data.js, generado por build.py). */
+/* Contactos F!NE — arma la página a partir de window.FINE (data.js, generado por build.py).
+   Una sola web con dos unidades de negocio en solapas: laboratorio y CORE. */
 
 (function () {
   "use strict";
@@ -61,22 +62,7 @@
     $("links").appendChild(a);
   });
 
-  /* ---------------- Atajos ---------------- */
-
-  (D.atajos || []).forEach(function (atajo) {
-    var b = crear("button", "chip", atajo.texto);
-    b.type = "button";
-    b.addEventListener("click", function () {
-      var destino = document.getElementById("area-" + atajo.area);
-      if (!destino) return;
-      destino.scrollIntoView({ block: "start" });
-      destino.classList.add("area--destacada");
-      setTimeout(function () { destino.classList.remove("area--destacada"); }, 2400);
-    });
-    $("atajos").appendChild(b);
-  });
-
-  /* ---------------- Tarjetas ---------------- */
+  /* ---------------- Tarjeta de persona ---------------- */
 
   function tarjeta(persona) {
     var caja = crear("article", "tarjeta");
@@ -94,7 +80,7 @@
     var acciones = crear("div", "tarjeta__acciones");
     var wa = soloDigitos(persona.whatsapp || persona.telefono);
 
-    // WhatsApp primero: es la vía que más se usa y la que el visitante busca.
+    // WhatsApp primero: es la via que mas se usa y la que el visitante busca.
     if (wa) {
       acciones.appendChild(
         boton("btn--lima", ICONOS.whatsapp, "WhatsApp", "https://wa.me/" + wa, true)
@@ -121,16 +107,15 @@
     return caja;
   }
 
-  var contenedor = $("areas");
+  /* ---------------- Áreas ---------------- */
 
-  (D.areas || []).forEach(function (area, i) {
-    var seccion = crear("section", "area aparece");
+  function seccionArea(area, i) {
+    var seccion = crear("section", "area");
     seccion.id = "area-" + area.id;
-    seccion.style.animationDelay = (0.05 + i * 0.06).toFixed(2) + "s";
 
     var cabecera = crear("div", "area__cabecera");
     cabecera.appendChild(crear("span", "area__indice", String(i + 1).padStart(2, "0")));
-    cabecera.appendChild(crear("h2", "area__nombre", area.nombre));
+    cabecera.appendChild(crear("h3", "area__nombre", area.nombre));
     seccion.appendChild(cabecera);
 
     if (area.detalle) seccion.appendChild(crear("p", "area__detalle", area.detalle));
@@ -138,18 +123,107 @@
       seccion.appendChild(tarjeta(persona));
     });
 
-    contenedor.appendChild(seccion);
+    return seccion;
+  }
+
+  /* ---------------- Módulos (solo CORE) ---------------- */
+
+  function grillaModulos(modulos) {
+    var grilla = crear("div", "modulos");
+    modulos.forEach(function (modulo) {
+      var caja = crear("div", "modulo");
+      caja.appendChild(crear("h4", "modulo__nombre", modulo.nombre));
+      caja.appendChild(crear("p", "modulo__detalle", modulo.detalle));
+      grilla.appendChild(caja);
+    });
+    return grilla;
+  }
+
+  /* ---------------- Paneles y solapas ---------------- */
+
+  var paneles = $("paneles");
+  var solapas = [];
+
+  function mostrar(id) {
+    solapas.forEach(function (s) {
+      var activa = s.dataset.unidad === id;
+      s.classList.toggle("solapa--activa", activa);
+      s.setAttribute("aria-selected", activa ? "true" : "false");
+    });
+    Array.prototype.forEach.call(paneles.children, function (p) {
+      p.hidden = p.dataset.unidad !== id;
+    });
+    // El hash deja compartir un link que abre directo en una unidad.
+    if (window.location.hash.slice(1) !== id) {
+      history.replaceState(null, "", "#" + id);
+    }
+  }
+
+  (D.unidades || []).forEach(function (unidad) {
+    /* Solapa */
+    var solapa = crear("button", "solapa");
+    solapa.type = "button";
+    solapa.dataset.unidad = unidad.id;
+    solapa.setAttribute("role", "tab");
+    solapa.appendChild(crear("span", "solapa__nombre", unidad.nombre));
+    solapa.appendChild(crear("span", "solapa__titulo", unidad.titulo));
+    solapa.addEventListener("click", function () { mostrar(unidad.id); });
+    $("selector").appendChild(solapa);
+    solapas.push(solapa);
+
+    /* Panel */
+    var panel = crear("section", "panel aparece");
+    panel.dataset.unidad = unidad.id;
+    panel.setAttribute("role", "tabpanel");
+
+    if (unidad.resumen) panel.appendChild(crear("p", "panel__resumen", unidad.resumen));
+    if (unidad.pitch) panel.appendChild(crear("p", "panel__pitch", unidad.pitch));
+
+    if (unidad.modulos && unidad.modulos.length) {
+      panel.appendChild(crear("h2", "rotulo", "Qué incluye"));
+      panel.appendChild(grillaModulos(unidad.modulos));
+    }
+
+    if (unidad.atajos && unidad.atajos.length) {
+      panel.appendChild(crear("h2", "rotulo", "¿Qué necesitás?"));
+      var chips = crear("div", "chips");
+      unidad.atajos.forEach(function (atajo) {
+        var b = crear("button", "chip", atajo.texto);
+        b.type = "button";
+        b.addEventListener("click", function () {
+          var destino = document.getElementById("area-" + atajo.area);
+          if (!destino) return;
+          destino.scrollIntoView({ block: "start" });
+          destino.classList.add("area--destacada");
+          setTimeout(function () { destino.classList.remove("area--destacada"); }, 2400);
+        });
+        chips.appendChild(b);
+      });
+      panel.appendChild(chips);
+    }
+
+    (unidad.areas || []).forEach(function (area, i) {
+      panel.appendChild(seccionArea(area, i));
+    });
+
+    paneles.appendChild(panel);
   });
+
+  var inicial = window.location.hash.slice(1);
+  var existe = (D.unidades || []).some(function (u) { return u.id === inicial; });
+  mostrar(existe ? inicial : (D.unidades[0] || {}).id);
 
   /* ---------------- Cierre ---------------- */
 
-  /* Contacto general: el comercial si tiene WhatsApp cargado, si no el primero que tenga. */
+  /* Contacto general: el comercial del laboratorio, o el primero con WhatsApp cargado. */
   function generalWhatsApp() {
     var candidatos = [];
-    (D.areas || []).forEach(function (area) {
-      (area.personas || []).forEach(function (persona) {
-        var wa = soloDigitos(persona.whatsapp || persona.telefono);
-        if (wa) candidatos.push({ area: area.id, wa: wa });
+    (D.unidades || []).forEach(function (unidad) {
+      (unidad.areas || []).forEach(function (area) {
+        (area.personas || []).forEach(function (persona) {
+          var wa = soloDigitos(persona.whatsapp || persona.telefono);
+          if (wa) candidatos.push({ area: area.id, wa: wa });
+        });
       });
     });
     var comercial = candidatos.filter(function (c) { return c.area === "comercial"; });

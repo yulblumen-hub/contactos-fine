@@ -3,106 +3,201 @@
 window.FINE = {
   "empresa": {
     "nombre": "The F!NE Company",
-    "bajada": "Elegí el área que necesitás y escribinos directo. Sin intermediarios.",
+    "bajada": "Elegí qué te interesa y escribile directo a quien corresponde.",
     "web": "https://thefinecompany.com.ar",
     "tienda": "https://www.mercadolibre.com.ar/tienda/fine",
     "instagram": "https://instagram.com/keepmefine",
     "mailGeneral": "customer@thefinecompany.com.ar"
   },
-  "atajos": [
+  "unidades": [
     {
-      "texto": "Quiero vender F!NE",
-      "area": "comercial"
-    },
-    {
-      "texto": "Fasón / desarrollo de producto",
-      "area": "produccion"
-    },
-    {
-      "texto": "Pagos y facturación",
-      "area": "administracion"
-    },
-    {
-      "texto": "Alianzas y prensa",
-      "area": "direccion"
-    }
-  ],
-  "areas": [
-    {
-      "id": "comercial",
-      "nombre": "Comercial y E-commerce",
-      "detalle": "Alianzas, venta mayorista y consultas de e-commerce.",
-      "personas": [
+      "id": "lab",
+      "nombre": "F!NE",
+      "titulo": "Laboratorio y Producción",
+      "resumen": "Suplementos y nutrición: marca propia, fasón y venta mayorista.",
+      "atajos": [
         {
-          "nombre": "Yul",
-          "apellido": "",
-          "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
-          "mail": "yulblumen@thefinecompany.com.ar",
-          "telefono": "+5491159628940",
-          "whatsapp": "5491159628940",
-          "slug": "yul",
-          "vcf": "vcf/yul.vcf"
-        }
-      ]
-    },
-    {
-      "id": "produccion",
-      "nombre": "Producción y Fasón",
-      "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
-      "personas": [
-        {
-          "nombre": "Santiago",
-          "apellido": "Beier",
-          "cargo": "Producción",
-          "mail": "santiagobeier@thefinecompany.com.ar",
-          "telefono": "+5491155766264",
-          "whatsapp": "5491155766264",
-          "slug": "santiago-beier",
-          "vcf": "vcf/santiago-beier.vcf"
-        }
-      ]
-    },
-    {
-      "id": "administracion",
-      "nombre": "Administración",
-      "detalle": "Pagos, facturación y proveedores.",
-      "personas": [
-        {
-          "nombre": "Facundo",
-          "apellido": "Lobo",
-          "cargo": "Administración",
-          "mail": "administracion@thefinecompany.com.ar",
-          "telefono": "+5491128186862",
-          "whatsapp": "5491128186862",
-          "slug": "facundo-lobo",
-          "vcf": "vcf/facundo-lobo.vcf"
-        }
-      ]
-    },
-    {
-      "id": "direccion",
-      "nombre": "Dirección",
-      "detalle": "Temas directivos, alianzas estratégicas y prensa.",
-      "personas": [
-        {
-          "nombre": "Francisco",
-          "apellido": "Casas",
-          "cargo": "Director",
-          "mail": "franciscocasas@thefinecompany.com.ar",
-          "telefono": "+5491167380935",
-          "whatsapp": "5491167380935",
-          "slug": "francisco-casas",
-          "vcf": "vcf/francisco-casas.vcf"
+          "texto": "Quiero vender F!NE",
+          "area": "comercial"
         },
         {
-          "nombre": "Javier",
-          "apellido": "Del Valle",
-          "cargo": "Director",
-          "mail": "javierdelvalle@thefinecompany.com.ar",
-          "telefono": "+5491140973631",
-          "whatsapp": "5491140973631",
-          "slug": "javier-del-valle",
-          "vcf": "vcf/javier-del-valle.vcf"
+          "texto": "Fasón / desarrollo de producto",
+          "area": "produccion"
+        },
+        {
+          "texto": "Pagos y facturación",
+          "area": "administracion"
+        },
+        {
+          "texto": "Alianzas y prensa",
+          "area": "direccion"
+        }
+      ],
+      "areas": [
+        {
+          "id": "comercial",
+          "nombre": "Comercial y E-commerce",
+          "detalle": "Alianzas, venta mayorista y consultas de e-commerce.",
+          "personas": [
+            {
+              "nombre": "Yul",
+              "apellido": "Blumencwejg",
+              "cargo": "Alianzas, Ventas Mayoristas y E-commerce",
+              "mail": "yulblumen@thefinecompany.com.ar",
+              "telefono": "+5491159628940",
+              "whatsapp": "5491159628940",
+              "slug": "yul-blumencwejg",
+              "vcf": "vcf/yul-blumencwejg.vcf"
+            }
+          ]
+        },
+        {
+          "id": "produccion",
+          "nombre": "Producción y Fasón",
+          "detalle": "Desarrollo de nuevos productos y fasón en nuestras fábricas y laboratorios.",
+          "personas": [
+            {
+              "nombre": "Santiago",
+              "apellido": "Beier",
+              "cargo": "Producción",
+              "mail": "santiagobeier@thefinecompany.com.ar",
+              "telefono": "+5491155766264",
+              "whatsapp": "5491155766264",
+              "slug": "santiago-beier",
+              "vcf": "vcf/santiago-beier.vcf"
+            }
+          ]
+        },
+        {
+          "id": "administracion",
+          "nombre": "Administración",
+          "detalle": "Pagos, facturación y proveedores.",
+          "personas": [
+            {
+              "nombre": "Facundo",
+              "apellido": "Lobo",
+              "cargo": "Administración",
+              "mail": "administracion@thefinecompany.com.ar",
+              "telefono": "+5491128186862",
+              "whatsapp": "5491128186862",
+              "slug": "facundo-lobo",
+              "vcf": "vcf/facundo-lobo.vcf"
+            }
+          ]
+        },
+        {
+          "id": "direccion",
+          "nombre": "Dirección",
+          "detalle": "Temas directivos, alianzas estratégicas y prensa.",
+          "personas": [
+            {
+              "nombre": "Francisco",
+              "apellido": "Casas",
+              "cargo": "Director",
+              "mail": "franciscocasas@thefinecompany.com.ar",
+              "telefono": "+5491167380935",
+              "whatsapp": "5491167380935",
+              "slug": "francisco-casas",
+              "vcf": "vcf/francisco-casas.vcf"
+            },
+            {
+              "nombre": "Javier",
+              "apellido": "Del Valle",
+              "cargo": "Director",
+              "mail": "javierdelvalle@thefinecompany.com.ar",
+              "telefono": "+5491140973631",
+              "whatsapp": "5491140973631",
+              "slug": "javier-del-valle",
+              "vcf": "vcf/javier-del-valle.vcf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "nombre": "F!NE CORE",
+      "titulo": "Sistema de gestión integral",
+      "resumen": "Un solo sistema para manejar toda la empresa, de la venta al cashflow.",
+      "pitch": "CORE es el sistema con el que operamos F!NE todos los días. Une en un mismo lugar las ventas de Mercado Libre y Tienda Nube, el WhatsApp con bot, el CRM, el stock de todos los depósitos, las compras, la tesorería y el análisis de pauta. Sin planillas sueltas ni sistemas que no se hablan entre sí.",
+      "modulos": [
+        {
+          "nombre": "Comercial",
+          "detalle": "Mercado Libre, Tienda Nube, B2B, mayorista, links de pago y mapeo de SKUs."
+        },
+        {
+          "nombre": "WhatsApp y CRM",
+          "detalle": "Conversaciones con bot, pipeline de ventas, métricas, templates y marketing de influencers."
+        },
+        {
+          "nombre": "Ads y análisis",
+          "detalle": "KPIs de Meli y Meta consolidados, desempeño de publicaciones y espía de competencia."
+        },
+        {
+          "nombre": "Stock",
+          "detalle": "Depósitos, stock de terceros, remitos, recepción y forecast de reposición."
+        },
+        {
+          "nombre": "Administración",
+          "detalle": "Dashboard CFO, facturas de compra y venta, pagos, cobros, proveedores y clientes."
+        },
+        {
+          "nombre": "Tesorería",
+          "detalle": "Cashflow, cheques, inversiones y objetivos de la compañía."
+        },
+        {
+          "nombre": "Logística",
+          "detalle": "Despachos, seguimiento y control de entregas."
+        },
+        {
+          "nombre": "RRHH y Compras",
+          "detalle": "Equipo, planificación y órdenes de compra."
+        }
+      ],
+      "atajos": [
+        {
+          "texto": "Quiero una demo",
+          "area": "core-comercial"
+        },
+        {
+          "texto": "Hablar con dirección",
+          "area": "core-direccion"
+        }
+      ],
+      "areas": [
+        {
+          "id": "core-comercial",
+          "nombre": "Demos y comercial",
+          "detalle": "Te mostramos el sistema funcionando y vemos cómo se adapta a tu empresa.",
+          "personas": [
+            {
+              "nombre": "Yul",
+              "apellido": "Blumencwejg",
+              "cargo": "Comercial F!NE CORE",
+              "mail": "yulblumen@thefinecompany.com.ar",
+              "telefono": "+5491159628940",
+              "whatsapp": "5491159628940",
+              "slug": "yul-blumencwejg",
+              "vcf": "vcf/yul-blumencwejg.vcf"
+            }
+          ]
+        },
+        {
+          "id": "core-direccion",
+          "nombre": "Dirección",
+          "detalle": "Implementaciones grandes, alianzas y acuerdos comerciales.",
+          "personas": [
+            {
+              "nombre": "Francisco",
+              "apellido": "Casas",
+              "cargo": "Director",
+              "mail": "franciscocasas@thefinecompany.com.ar",
+              "telefono": "+5491167380935",
+              "whatsapp": "5491167380935",
+              "slug": "francisco-casas",
+              "vcf": "vcf/francisco-casas.vcf"
+            }
+          ]
         }
       ]
     }

@@ -3,6 +3,13 @@
 Página pública de contactos por área. Se comparte con un QR, un link o un sticker NFC:
 todo apunta a la misma URL.
 
+Una sola web con dos unidades de negocio en solapas:
+
+- **F!NE** — laboratorio y producción de suplementos.
+- **F!NE CORE** — el sistema de gestión integral que ofrecemos a otras empresas.
+
+Se puede linkear directo a una: `.../#lab` o `.../#core`.
+
 ## Cómo cambiar los datos
 
 Todo sale de un solo archivo: **`contactos.json`**.
