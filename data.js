@@ -3,6 +3,7 @@
 window.FINE = {
   "empresa": {
     "nombre": "The F!NE Company",
+    "url": "https://contactos.thefinecompany.com.ar/",
     "web": "https://thefinecompany.com.ar",
     "tienda": "https://www.mercadolibre.com.ar/tienda/fine",
     "instagram": "https://instagram.com/keepmefine",
