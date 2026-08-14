@@ -1,0 +1,371 @@
+/* Contactos F!NE — hoja de estilos.
+   Paleta tomada de la identidad de marca: petróleo profundo + lima. */
+
+:root {
+  --tinta: #02181f;
+  --tinta-2: #02222c;
+  --petroleo: #02323f;
+  --petroleo-alto: #06404f;
+  --lima: #c9c949;
+  --lima-viva: #dede6a;
+  --texto: #f2f6f6;
+  --texto-2: #8fa8ae;
+  --linea: rgba(255, 255, 255, 0.09);
+  --linea-viva: rgba(201, 201, 73, 0.35);
+  --radio: 18px;
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+  --ancho: 660px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--tinta);
+  color: var(--texto);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Resplandor de fondo: fijo para que no se mueva con el scroll. */
+.fondo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(120% 68% at 50% -8%, rgba(201, 201, 73, 0.15) 0%, transparent 62%),
+    radial-gradient(90% 55% at 50% 0%, var(--petroleo) 0%, transparent 70%),
+    var(--tinta);
+}
+
+main {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 22px 40px;
+}
+
+/* ---------------- Hero ---------------- */
+
+.hero {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: calc(56px + env(safe-area-inset-top)) 22px 40px;
+  text-align: center;
+}
+
+.hero__logo {
+  width: 176px;
+  max-width: 56vw;
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
+}
+
+.hero__titulo {
+  font-size: clamp(28px, 8.4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  margin: 26px 0 0;
+  background: linear-gradient(180deg, #ffffff 0%, #b9cdd2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__bajada {
+  max-width: 30ch;
+  margin: 14px auto 0;
+  color: var(--texto-2);
+  font-size: 15.5px;
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.hero__links a {
+  color: var(--texto-2);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+
+.hero__links a:hover {
+  color: var(--lima);
+  border-color: var(--linea-viva);
+  background: rgba(201, 201, 73, 0.08);
+}
+
+/* ---------------- Rótulos ---------------- */
+
+.rotulo {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  margin: 0 0 14px;
+}
+
+/* ---------------- Atajos ---------------- */
+
+.ruta { margin-top: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.12s;
+}
+
+.chip:hover {
+  background: rgba(201, 201, 73, 0.1);
+  border-color: var(--linea-viva);
+}
+
+.chip:active { transform: scale(0.97); }
+
+/* ---------------- Áreas ---------------- */
+
+.area {
+  margin-top: 44px;
+  scroll-margin-top: 20px;
+}
+
+.area__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--linea);
+  margin-bottom: 16px;
+}
+
+.area__indice {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--lima);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+.area__nombre {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+  flex: 1;
+}
+
+.area__detalle {
+  margin: 0 0 16px;
+  color: var(--texto-2);
+  font-size: 14.5px;
+  max-width: 46ch;
+}
+
+/* Destello al llegar desde un atajo. */
+.area--destacada .area__nombre { color: var(--lima); }
+.area--destacada .tarjeta { border-color: var(--linea-viva); }
+
+/* ---------------- Tarjeta de persona ---------------- */
+
+.tarjeta {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.022) 100%);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 18px;
+  margin-bottom: 10px;
+  box-shadow: var(--sombra);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.tarjeta:hover { border-color: rgba(255, 255, 255, 0.16); }
+
+.tarjeta__fila { display: flex; align-items: center; gap: 13px; }
+
+.avatar {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--lima);
+  background: radial-gradient(circle at 30% 25%, rgba(201, 201, 73, 0.28), rgba(201, 201, 73, 0.07));
+  border: 1px solid var(--linea-viva);
+}
+
+.tarjeta__nombre {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.tarjeta__cargo {
+  color: var(--texto-2);
+  font-size: 13.5px;
+  margin: 1px 0 0;
+}
+
+.tarjeta__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pendiente {
+  margin: 15px 0 0;
+  font-size: 13px;
+  color: var(--texto-2);
+  border: 1px dashed var(--linea);
+  border-radius: 11px;
+  padding: 10px 13px;
+}
+
+/* ---------------- Botones ---------------- */
+
+.btn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 11px 17px;
+  border: 1px solid var(--linea);
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.18s, border-color 0.18s, transform 0.12s;
+}
+
+.btn:hover { background: rgba(255, 255, 255, 0.09); }
+
+.btn:active { transform: scale(0.975); }
+
+.btn svg { width: 15px; height: 15px; flex: none; }
+
+.btn--lima {
+  background: var(--lima);
+  border-color: var(--lima);
+  color: #04222b;
+  font-weight: 700;
+}
+
+.btn--lima:hover { background: var(--lima-viva); border-color: var(--lima-viva); }
+
+.btn--fantasma {
+  background: transparent;
+  color: var(--texto-2);
+  border-color: var(--linea);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--lima);
+  outline-offset: 2px;
+}
+
+/* ---------------- Cierre ---------------- */
+
+.cierre {
+  margin-top: 52px;
+  padding: 26px 22px 28px;
+  text-align: center;
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(201, 201, 73, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.cierre__titulo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.cierre__bajada {
+  color: var(--texto-2);
+  font-size: 14.5px;
+  margin: 6px auto 18px;
+  max-width: 34ch;
+}
+
+.cierre__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+
+/* ---------------- Pie ---------------- */
+
+.pie {
+  text-align: center;
+  color: var(--texto-2);
+  font-size: 12.5px;
+  padding: 34px 22px calc(34px + env(safe-area-inset-bottom));
+}
+
+.pie p { margin: 16px 0 0; opacity: 0.7; }
+
+/* ---------------- Entrada ---------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  .aparece {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: subir 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes subir {
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ---------------- Escritorio ---------------- */
+
+@media (min-width: 720px) {
+  .hero { padding-top: 76px; }
+  .area { margin-top: 52px; }
+  .tarjeta { padding: 20px 22px; }
+  .tarjeta:hover { transform: translateY(-2px); }
+}
