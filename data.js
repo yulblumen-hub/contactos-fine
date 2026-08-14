@@ -59,16 +59,6 @@ window.FINE = {
           "whatsapp": "",
           "slug": "santiago-beier",
           "vcf": "vcf/santiago-beier.vcf"
-        },
-        {
-          "nombre": "Agustina",
-          "apellido": "Moro",
-          "cargo": "Desarrollo de Productos",
-          "mail": "",
-          "telefono": "",
-          "whatsapp": "",
-          "slug": "agustina-moro",
-          "vcf": "vcf/agustina-moro.vcf"
         }
       ]
     },
