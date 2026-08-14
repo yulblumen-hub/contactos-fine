@@ -3,7 +3,6 @@
 window.FINE = {
   "empresa": {
     "nombre": "The F!NE Company",
-    "bajada": "Elegí qué te interesa y escribile directo a quien corresponde.",
     "web": "https://thefinecompany.com.ar",
     "tienda": "https://www.mercadolibre.com.ar/tienda/fine",
     "instagram": "https://instagram.com/keepmefine",
@@ -14,23 +13,23 @@ window.FINE = {
       "id": "lab",
       "nombre": "F!NE",
       "titulo": "Laboratorio y Producción",
-      "resumen": "Suplementos y nutrición: marca propia, fasón y venta mayorista.",
-      "atajos": [
+      "bajada": "Suplementos y nutrición: marca propia, fasón y venta mayorista.",
+      "intro": {
+        "titulo": "Innovación para el bienestar",
+        "texto": "En F!NE desarrollamos y fabricamos nuestras propias formulaciones, con respaldo técnico, control de calidad y mejora continua. Del cuidado de la piel al alto rendimiento: laboratorio, planta y marca en una misma casa, combinando desarrollo propio con alianzas y tecnologías internacionales."
+      },
+      "links": [
         {
-          "texto": "Quiero vender F!NE",
-          "area": "comercial"
+          "texto": "Web",
+          "url": "https://thefinecompany.com.ar"
         },
         {
-          "texto": "Fasón / desarrollo de producto",
-          "area": "produccion"
+          "texto": "Mercado Libre",
+          "url": "https://www.mercadolibre.com.ar/tienda/fine"
         },
         {
-          "texto": "Pagos y facturación",
-          "area": "administracion"
-        },
-        {
-          "texto": "Alianzas y prensa",
-          "area": "direccion"
+          "texto": "Instagram",
+          "url": "https://instagram.com/keepmefine"
         }
       ],
       "areas": [
@@ -117,9 +116,14 @@ window.FINE = {
     {
       "id": "core",
       "nombre": "F!NE CORE",
+      "marca": "CORE",
       "titulo": "Sistema de gestión integral",
-      "resumen": "Un solo sistema para manejar toda la empresa, de la venta al cashflow.",
-      "pitch": "CORE es el sistema con el que operamos F!NE todos los días. Une en un mismo lugar las ventas de Mercado Libre y Tienda Nube, el WhatsApp con bot, el CRM, el stock de todos los depósitos, las compras, la tesorería y el análisis de pauta. Sin planillas sueltas ni sistemas que no se hablan entre sí.",
+      "bajada": "Un solo sistema para manejar toda la empresa, de la venta al cashflow.",
+      "intro": {
+        "titulo": "Toda la empresa en un solo lugar",
+        "texto": "CORE es el sistema con el que operamos F!NE todos los días. Une las ventas de Mercado Libre y Tienda Nube, el WhatsApp con bot, el CRM, el stock de todos los depósitos, las compras, la tesorería y el análisis de pauta. No es un software teórico: es la operación de una empresa real, puesta a disposición de la tuya."
+      },
+      "links": [],
       "modulos": [
         {
           "nombre": "Comercial",
@@ -152,16 +156,6 @@ window.FINE = {
         {
           "nombre": "RRHH y Compras",
           "detalle": "Equipo, planificación y órdenes de compra."
-        }
-      ],
-      "atajos": [
-        {
-          "texto": "Quiero una demo",
-          "area": "core-comercial"
-        },
-        {
-          "texto": "Hablar con dirección",
-          "area": "core-direccion"
         }
       ],
       "areas": [

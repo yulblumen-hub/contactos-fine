@@ -45,22 +45,27 @@
     return (a + b).toUpperCase() || a.toUpperCase();
   }
 
-  /* ---------------- Cabecera ---------------- */
+  /* ---------------- Cabecera ----------------
+     Cambia con la solapa: el logo suma "CORE" y los links son los de cada unidad. */
 
-  $("bajada").textContent = D.empresa.bajada;
+  function pintarCabecera(unidad) {
+    var sufijo = $("marca-sufijo");
+    sufijo.textContent = unidad.marca || "";
+    sufijo.hidden = !unidad.marca;
 
-  [
-    { texto: "Web", url: D.empresa.web },
-    { texto: "Mercado Libre", url: D.empresa.tienda },
-    { texto: "Instagram", url: D.empresa.instagram }
-  ].forEach(function (item) {
-    if (!item.url) return;
-    var a = crear("a", null, item.texto);
-    a.href = item.url;
-    a.target = "_blank";
-    a.rel = "noopener";
-    $("links").appendChild(a);
-  });
+    $("bajada").textContent = unidad.bajada || "";
+
+    var links = $("links");
+    links.innerHTML = "";
+    (unidad.links || []).forEach(function (item) {
+      if (!item.url) return;
+      var a = crear("a", null, item.texto);
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      links.appendChild(a);
+    });
+  }
 
   /* ---------------- Tarjeta de persona ---------------- */
 
@@ -153,6 +158,10 @@
     Array.prototype.forEach.call(paneles.children, function (p) {
       p.hidden = p.dataset.unidad !== id;
     });
+
+    var unidad = (D.unidades || []).filter(function (u) { return u.id === id; })[0];
+    if (unidad) pintarCabecera(unidad);
+
     // El hash deja compartir un link que abre directo en una unidad.
     if (window.location.hash.slice(1) !== id) {
       history.replaceState(null, "", "#" + id);
@@ -176,31 +185,19 @@
     panel.dataset.unidad = unidad.id;
     panel.setAttribute("role", "tabpanel");
 
-    if (unidad.resumen) panel.appendChild(crear("p", "panel__resumen", unidad.resumen));
-    if (unidad.pitch) panel.appendChild(crear("p", "panel__pitch", unidad.pitch));
+    if (unidad.intro) {
+      var intro = crear("section", "intro");
+      intro.appendChild(crear("h2", "intro__titulo", unidad.intro.titulo));
+      intro.appendChild(crear("p", "intro__texto", unidad.intro.texto));
+      panel.appendChild(intro);
+    }
 
     if (unidad.modulos && unidad.modulos.length) {
       panel.appendChild(crear("h2", "rotulo", "Qué incluye"));
       panel.appendChild(grillaModulos(unidad.modulos));
     }
 
-    if (unidad.atajos && unidad.atajos.length) {
-      panel.appendChild(crear("h2", "rotulo", "¿Qué necesitás?"));
-      var chips = crear("div", "chips");
-      unidad.atajos.forEach(function (atajo) {
-        var b = crear("button", "chip", atajo.texto);
-        b.type = "button";
-        b.addEventListener("click", function () {
-          var destino = document.getElementById("area-" + atajo.area);
-          if (!destino) return;
-          destino.scrollIntoView({ block: "start" });
-          destino.classList.add("area--destacada");
-          setTimeout(function () { destino.classList.remove("area--destacada"); }, 2400);
-        });
-        chips.appendChild(b);
-      });
-      panel.appendChild(chips);
-    }
+    panel.appendChild(crear("h2", "rotulo", "A quién escribirle"));
 
     (unidad.areas || []).forEach(function (area, i) {
       panel.appendChild(seccionArea(area, i));
