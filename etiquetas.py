@@ -106,10 +106,12 @@ def sticker(c, con_qr, diametro):
     c.setLineWidth(0.9)
     c.circle(CENTRO[0], CENTRO[1], RADIO - 2.2 * mm, stroke=1, fill=0)
 
-    texto_en_arco(c, "ACERCÁ TU CELULAR", RADIO - 4.6 * mm,
-                  "Jost", 5.4, 1.5, T.LIMA, arriba=True)
-    texto_en_arco(c, "CONTACTOS F!NE", RADIO - 4.6 * mm,
-                  "Jost", 4.8, 1.4, T.GRIS_CLARO, arriba=False)
+    # Abajo de 34 mm el texto en arco queda ilegible: mejor solo la marca.
+    if diametro >= 34 * mm:
+        texto_en_arco(c, "ACERCÁ TU CELULAR", RADIO - 4.6 * mm,
+                      "Jost", 5.4, 1.5, T.LIMA, arriba=True)
+        texto_en_arco(c, "CONTACTOS F!NE", RADIO - 4.6 * mm,
+                      "Jost", 4.8, 1.4, T.GRIS_CLARO, arriba=False)
 
     if con_qr:
         # Sin leon: el QR necesita todo el espacio disponible para leerse bien.
@@ -120,8 +122,11 @@ def sticker(c, con_qr, diametro):
                     lado + 3.2 * mm, lado + 3.2 * mm, 1.4 * mm, stroke=0, fill=1)
         c.drawImage(QR_CHICO, CENTRO[0] - lado / 2, base, lado, lado)
     else:
-        T.leon_en(c, T.LEON_LIMA, CENTRO[0], CENTRO[1] + 3.5 * mm, 14 * mm)
-        T.logo_en(c, CENTRO[0], CENTRO[1] - 8.5 * mm, 17 * mm, white)
+        # Todo en proporcion al diametro, para que sirva en cualquier medida.
+        d = diametro / mm
+        T.leon_en(c, T.LEON_LIMA, CENTRO[0], CENTRO[1] + d * 0.09 * mm, d * 0.37 * mm)
+        ancho_logo = d * 0.45 * mm
+        T.logo_en(c, CENTRO[0], CENTRO[1] - d * 0.22 * mm, ancho_logo, white)
 
     # Linea de corte, para que la troqueladora sepa donde cortar.
     c.setStrokeColor(Color(0.5, 0.5, 0.5))
@@ -137,9 +142,13 @@ def main():
     salida = RAIZ / "etiquetas"
     salida.mkdir(exist_ok=True)
 
+    # 25 y 30 mm son las medidas en las que vienen casi todos los tags NTAG213
+    # que se consiguen sueltos; 38 y 45 son para stand, caja o mostrador.
     variantes = [
-        ("sticker-nfc-con-qr", True, CON_QR),
-        ("sticker-nfc", False, SOLO_NFC),
+        ("sticker-nfc-25mm", False, 25 * mm),
+        ("sticker-nfc-30mm", False, 30 * mm),
+        ("sticker-nfc-38mm", False, SOLO_NFC),
+        ("sticker-nfc-con-qr-45mm", True, CON_QR),
     ]
     for nombre, con_qr, diametro in variantes:
         hoja = medidas(diametro)
